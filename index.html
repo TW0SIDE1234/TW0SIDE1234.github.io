@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <!-- Load Material Icons -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <script src="https://apis.google.com/js/api.js"></script>
   <style>
     * {
       margin: 0;
@@ -109,6 +110,58 @@
   <!-- Bottom Header with Icon -->
   <div class="bottom-header">
   </div>
-  
+
+  <script>
+    // Function to fetch the visitor's IP address using IPify API
+    fetch('https://api.ipify.org?format=json')
+      .then(response => response.json())
+      .then(data => {
+        const visitorIP = data.ip;
+
+        // Log the IP address to Google Sheets
+        logIPToGoogleSheet(visitorIP);
+      })
+      .catch(error => console.error('Error fetching IP address:', error));
+
+    // Function to log IP to Google Sheets
+    function logIPToGoogleSheet(ipAddress) {
+      gapi.load('client', () => {
+        gapi.client.init({
+          apiKey: 'AIzaSyDaJxSSgPCfcR5RySq6rAz24eu2IIzJYmw',  // Replace with your API Key
+          discoveryDocs: ['https://sheets.googleapis.com/$discovery/rest?version=v4']
+        }).then(() => {
+          const now = new Date().toISOString();  // Current timestamp
+          const pageVisited = window.location.href;  // The current URL of the page
+
+          const params = {
+            spreadsheetId: '1eX-rvvhRAYDqQczvCSBfS33ODVQR2_CgiMaYXcRxk3U',  // Replace with your Spreadsheet ID
+            range: 'Sheet1!A:C',  // Data range in the sheet
+            valueInputOption: 'RAW'
+          };
+
+          const valueRangeBody = {
+            values: [
+              [now, ipAddress, pageVisited]
+            ]
+          };
+
+          // Appending the data to the Google Sheets
+          gapi.client.sheets.spreadsheets.values.append(params, valueRangeBody)
+            .then(response => {
+              console.log('IP Address logged:', response);
+            })
+            .catch(error => {
+              console.error('Error logging IP:', error);
+            });
+        });
+      });
+    }
+  </script>
+
+  <!-- Hitsteps TRACKING CODE - Manual 2025-05-10 - DO NOT CHANGE -->
+  <script type="text/javascript">(function(){var hstc=document.createElement('script'); hstc.src='https://edgecdnplus.com/code?code=a84b71378711fd3c5b21f2c8aa970696';hstc.async=true;var htssc = document.getElementsByTagName('script')[0];htssc.parentNode.insertBefore(hstc, htssc);})();
+  </script>
+  <noscript><a href="http://www.hitsteps.com/"><img src="//edgecdnplus.com/code?mode=img&amp;code=a84b71378711fd3c5b21f2c8aa970696" alt="website statistics" width="1" height="1" />blog tracking</a></noscript>
+  <!-- Hitsteps TRACKING CODE - DO NOT CHANGE -->
 </body>
 </html>
