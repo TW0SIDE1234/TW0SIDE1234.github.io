@@ -79,20 +79,13 @@
 
     .link:hover {
       color: #FFB74D;
+
     }
 
     /* Move the icon down */
     .material-icons {
       margin-top: 10px; /* Adjust the value to move the icon down */
     }
-
-    /* Styling for the view counter */
-    .visitor-count {
-      font-size: 16px;
-      color: white;
-      margin-top: 20px;
-    }
-
   </style>
 </head>
 <body>
@@ -113,23 +106,8 @@
     </div>
   </div>
 
-  <!-- Visitor Count Display -->
-  <div class="visitor-count">
-    Visitors: <span id="visitor-count">Loading...</span>
+  <!-- Bottom Header with Icon -->
+  <div class="bottom-header">
   </div>
-
-  <script>
-    // API to fetch the visitor count
-    fetch('https://api.countapi.xyz/get/tw0side1234.github.io/visits')
-      .then(response => response.json())
-      .then(data => {
-        // Display the visitor count
-        document.getElementById('visitor-count').textContent = data.value;
-      })
-      .catch(error => {
-        console.error('Error fetching visitor count:', error);
-        document.getElementById('visitor-count').textContent = 'Error';
-      });
-  </script>
 </body>
 </html>
