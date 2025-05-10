@@ -1,255 +1,98 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>TW0SIDE</title>
+  <meta charset="UTF-8">
+  <title>TWOSIDE</title>
+  <!-- Load Lexend from Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Lexend&display=swap" rel="stylesheet">
   <style>
-    body {
+    * {
       margin: 0;
       padding: 0;
-      font-family: Arial, sans-serif;
-	  background: #e3eeff;
-		align-items: center;
+      box-sizing: border-box;
     }
 
-    .heading {
-      background-color: #2e3040;
-      color: white;
-      text-align: center;
+    html, body {
+      height: 100%;
       width: 100%;
-      padding: 10px 0;
+      font-family: 'Lexend', sans-serif;
+      overflow-x: hidden;
       display: flex;
+      justify-content: center;
       align-items: center;
-      justify-content: space-between;
-	  box-shadow: 2px 3px 7px 2px rgba(0,0,0,0.5);
-		align-items: center;
+      position: relative;
     }
 
- 
-    .heading-button {
-      margin: 0 10px; /* Adjust spacing between buttons */
+    .background-glow {
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle at center, #F1D9D1, #FFC572); /* Pink (#F1D9D1) and Orange (#FFB74D) */
+      z-index: -1;
+      animation: fadeInOut 10s ease-in-out infinite; /* Smooth fade in and out */
+      opacity: 1;
+      box-shadow: 0 0 50px 25px rgba(255, 152, 0, 0.8); /* Glowing effect */
     }
 
-    .heading h1 {
-      margin: 0;
-      padding-left: 20px;
+    @keyframes fadeInOut {
+      0%, 100% {
+        opacity: 1; /* Full opacity (glowing bright) */
+        box-shadow: 0 0 50px 25px rgba(255, 152, 0, 0.8); /* Strong glow */
+      }
+      50% {
+        opacity: 0.4; /* Reduced opacity for fading effect */
+        box-shadow: 0 0 80px 40px rgba(255, 152, 0, 0.6); /* Weakened glow */
+      }
+    }
+
+    .content-container {
       display: flex;
-      align-items: center;
-      height: 100px;
-		text-align: center;
-    }
-
-    .heading h1 img {
-      height: 70px;
-		text-align: center;
-		align-items: center;
-    }
-
-    .buttonrow {
+      flex-direction: column; /* Stack elements vertically */
+      align-items: center; /* Center everything */
+      justify-content: center; /* Vertically center everything */
+      z-index: 1;
       text-align: center;
-      font-family: Tahoma, sans-serif;
-      cursor: pointer;
-		align-items: center;
     }
 
-    .Firstparagraph {
-      font-family: Tahoma, sans-serif;
-      text-align: center;
-      width: 80%;
-      margin: 40px auto 0;
+    .center-text {
+      font-size: 64px;
+      color: #ED8D00; /* Text color in orange */
+      text-shadow: 0 0 15px rgba(255, 152, 0, 0.5);
+      margin-bottom: 40px; /* Moves the text upwards a bit */
     }
 
-    .Paragraphtext {
-      font-family: Tahoma, sans-serif;
-      text-align: center;
-      width: 50%;
-      margin: 30px auto 0;
+    .links-container {
+      display: flex;
+      flex-direction: column; /* Stack the links vertically */
+      align-items: center; /* Center the links horizontally */
+      gap: 20px; /* Adds space between the links */
     }
-	
-	.paragraph {
-            border: 0px solid black;
-            padding: 10px;
-            width: 1000px;
-            margin: 80px auto;
-            background-color: white;
-			box-shadow: 3px 3px 10px 2px rgba(0,0,0,0.5);
-			border-radius: 6px;
-	}
-	
-	.dummytext {
-	margin: 40px auto;
-	}
-	
-	.image {
-		text-align: center;
-		border: 0px solid black;
-        padding: 10px;
-        width: 1000px;
-        margin: 80px auto;
-        background-color: white;
-		box-shadow: 3px 3px 10px 2px rgba(0,0,0,0.5);
-		border-radius: 6px;
-		overflow: hidden;
-		}
-		
-	.image img {
-		border-radius: 8px;<h2>This is the content for Layout H2 Tag</h2>
-		box-shadow: 3px 3px 10px 2px rgba(0,0,0,0.5);
-	}
-	
-	.iframe {
-		box-shadow: 3px 3px 10px 2px rgba(0,0,0,0.5);
-		}
+
+    .link {
+      color: #ED8D00;
+      font-size: 20px;
+      text-decoration: none;
+      text-shadow: 0 0 10px rgba(255, 152, 0, 0.5);
+      transition: color 0.3s ease;
+    }
+
+    .link:hover {
+      color: #FFB74D; /* Hover color */
+    }
   </style>
 </head>
 <body>
-  <div class="heading" align="center">
-    <h1 align="center" contenteditable="false" style="outline: none;"><p>T   W   0   S   I   D   E</p>&nbsp;</h1>
-</div>
-	<div class="paragraph">
-  
-		<div class="Post">
-    <blockquote>
-      <blockquote>
-        <blockquote>
-          <blockquote>
-            <blockquote>
-              <h2 align="center">Blinding lights remade in GTA 5</h2>
-            </blockquote>
-          </blockquote>
-        </blockquote>
-      </blockquote>
-    </blockquote>
-	  <p align="center">
-		<iframe width="560" height="315" src="https://www.youtube.com/embed/mGncJg0GevA?si=lHadaJH8QBBHc_A8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-	  </p>
-  </div>
-</div>
-	<div class="paragraph">
-  
-		<div class="Post">
-    <blockquote>
-      <blockquote>
-        <blockquote>
-          <blockquote>
-            <blockquote>
-              <h2 align="center">NaturalVision Evolved Trailer without the NaturalVision Evolved</h2>
-            </blockquote>
-          </blockquote>
-        </blockquote>
-      </blockquote>
-    </blockquote>
-	  <p align="center">
-		 <iframe width="560" height="315" src="https://www.youtube.com/embed/WwiUix9eyvQ?si=TCHU4hrxFRP6bhVq" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-	  </p>
-  </div>
-	</div>
-	<div class="paragraph">
-  
-		<div class="Post">
-    <blockquote>
-      <blockquote>
-        <blockquote>
-          <blockquote>
-            <blockquote>
-              <blockquote>
-                <blockquote>
-                  <blockquote>
-                    <blockquote>
-                      <blockquote>
-                        <h2>Channel Trailer</h2>
-                      </blockquote>
-                    </blockquote>
-                  </blockquote>
-                </blockquote>
-              </blockquote>
-            </blockquote>
-          </blockquote>
-        </blockquote>
-      </blockquote>
-    </blockquote>
-	  <p align="center">
-		 <iframe width="560" height="315" src="https://www.youtube.com/embed/lJby470lVcU?si=bdOJzCpAG9V2lq57" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-	  </p>
-  </div>
-	</div>
-	
-		<div class="paragraph">
-  <div class="Post">
-    <blockquote>
-      <blockquote>
-        <blockquote>
-          <blockquote>
-            <blockquote>
-              <blockquote>
-                <blockquote>
-                  <blockquote>
-                    <h2>[OLD] Blinding Lights in GTA V</h2>
-                  </blockquote>
-                </blockquote>
-              </blockquote>
-            </blockquote>
-          </blockquote>
-        </blockquote>
-      </blockquote>
-    </blockquote>
-	  <p align="center">
-		 <iframe width="560" height="315" src="https://www.youtube.com/embed/rEEVcQ86qZI?si=ut3mfBSQAWG5Wj7P" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-	  </p>
-  </div>
-	</div>
-<div class="paragraph">
-  <div class="Post">
-    <blockquote>
-      <blockquote>
-        <blockquote>
-          <blockquote>
-            <blockquote>
-              <blockquote>
-                <blockquote>
-                  <blockquote>
-                    <h2>GTA Official Trailer Remastered</h2>
-                  </blockquote>
-                </blockquote>
-              </blockquote>
-            </blockquote>
-          </blockquote>
-        </blockquote>
-      </blockquote>
-    </blockquote>
-	  <p align="center">
-		 <iframe width="560" height="315" src="https://www.youtube.com/embed/y1fu45a9ED8?si=kMbjhluPtVh0IM85" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-	  </p>
-  </div>
-</div>
-  
-<div class="paragraph">
-  <div class="Post">
-    <blockquote>
-      <blockquote>
-        <blockquote>
-          <blockquote>
-            <blockquote>
-              <blockquote>
-                <blockquote>
-                  <blockquote>
-                    <blockquote>
-                      <h2>GTAV Fan Made Trailer</h2>
-                    </blockquote>
-                  </blockquote>
-                </blockquote>
-              </blockquote>
-            </blockquote>
-          </blockquote>
-        </blockquote>
-      </blockquote>
-    </blockquote>
-    <p align="center">
-		 <iframe width="560" height="315" src="https://www.youtube.com/embed/6FRnfJ1oI9c?si=k0-jpXITEdHrLJcH" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-	  </p>
-  </div>
-</div>
-	
-	
+  <div class="background-glow"></div>
 
+  <div class="content-container">
+    <div class="center-text">T W O S I D E </div>
+    <div class="links-container">
+      <a href="https://www.youtube.com/@TW0SIDE1234/" class="link" target="_blank">YouTube Channel</a>
+      <a href="https://steamcommunity.com/id/TW0SIDE/" class="link" target="_blank">Steam</a>
+      <a href="https://www.youtube.com" class="link" target="_blank">YouTube 3</a>
+    </div>
+  </div>
 </body>
 </html>
