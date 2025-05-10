@@ -9,10 +9,83 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <!-- Load Material Icons -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <script src="https://apis.google.com/js/api.js"></script>
-  <script src="https://apis.google.com/js/platform.js" async defer></script> <!-- For OAuth -->
   <style>
-    /* Your styles go here */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      width: 100%;
+      font-family: 'Lexend', sans-serif;
+      overflow: hidden; /* Prevent scrolling */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    .background-glow {
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle at center, #f0dcd5, #ffbe61);
+      z-index: -1;
+      opacity: 1;
+      box-shadow: 0 0 50px 25px rgba(255, 152, 0, 0.8);
+    }
+
+    .content-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 1;
+      text-align: center;
+    }
+
+    .center-text {
+      font-size: 64px;
+      color: #ED8D00;
+      text-shadow: 0 0 0px rgba(255, 152, 0, 0.5);
+      margin-bottom: 40px;
+      z-index: 2;
+    }
+
+    .links-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .link {
+      color: #ED8D00;
+      font-size: 20px;
+      text-decoration: none;
+      text-shadow: 0 0 10px rgba(255, 152, 0, 0.5);
+      transition: color 0.3s ease;
+      display: flex;
+      align-items: center;
+    }
+
+    .link i {
+      margin-right: 10px;
+    }
+
+    .link:hover {
+      color: #FFB74D;
+
+    }
+
+    /* Move the icon down */
+    .material-icons {
+      margin-top: 10px; /* Adjust the value to move the icon down */
+    }
   </style>
 </head>
 <body>
@@ -33,74 +106,9 @@
     </div>
   </div>
 
-  <script>
-    // Function to fetch the visitor's IP address using IPify API
-    fetch('https://api.ipify.org?format=json')
-      .then(response => response.json())
-      .then(data => {
-        const visitorIP = data.ip;
-        // Log the IP address to Google Sheets
-        logIPToGoogleSheet(visitorIP);
-      })
-      .catch(error => console.error('Error fetching IP address:', error));
-
-    // Function to authenticate the user and log the IP to Google Sheets
-    function logIPToGoogleSheet(ipAddress) {
-      // Load the Google API client
-      gapi.load('client:auth2', initClient);
-
-      // Initialize the Google API client
-      function initClient() {
-        gapi.client.init({
-          apiKey: 'AIzaSyDaJxSSgPCfcR5RySq6rAz24eu2IIzJYmw', // Replace with your API Key
-          clientId: '1076680742772-retgsikugauvg7760idsgq8imf8skt0e.apps.googleusercontent.com', // Replace with your OAuth2 client ID
-          scope: 'https://www.googleapis.com/auth/spreadsheets', // Permissions required
-          discoveryDocs: ['https://sheets.googleapis.com/$discovery/rest?version=v4']
-        }).then(() => {
-          // Check if the user is already signed in
-          if (gapi.auth2.getAuthInstance().isSignedIn.get()) {
-            appendIPToSheet(ipAddress);
-          } else {
-            // Sign in the user
-            gapi.auth2.getAuthInstance().signIn().then(() => {
-              appendIPToSheet(ipAddress);
-            });
-          }
-        });
-      }
-
-      // Function to append IP to the Google Sheets
-      function appendIPToSheet(ipAddress) {
-        const now = new Date().toISOString();
-        const pageVisited = window.location.href;
-
-        const params = {
-          spreadsheetId: '1eX-rvvhRAYDqQczvCSBfS33ODVQR2_CgiMaYXcRxk3U', // Replace with your Spreadsheet ID
-          range: 'Sheet1!A:C', // Data range in the sheet
-          valueInputOption: 'RAW'
-        };
-
-        const valueRangeBody = {
-          values: [
-            [now, ipAddress, pageVisited]
-          ]
-        };
-
-        // Append the data to the Google Sheet
-        gapi.client.sheets.spreadsheets.values.append(params, valueRangeBody)
-          .then(response => {
-            console.log('IP Address logged:', response);
-          })
-          .catch(error => {
-            console.error('Error logging IP:', error);
-          });
-      }
-    }
-  </script>
-
-  <!-- Hitsteps TRACKING CODE - Manual 2025-05-10 - DO NOT CHANGE -->
-  <script type="text/javascript">(function(){var hstc=document.createElement('script'); hstc.src='https://edgecdnplus.com/code?code=a84b71378711fd3c5b21f2c8aa970696';hstc.async=true;var htssc = document.getElementsByTagName('script')[0];htssc.parentNode.insertBefore(hstc, htssc);})();
-  </script>
-  <noscript><a href="http://www.hitsteps.com/"><img src="//edgecdnplus.com/code?mode=img&amp;code=a84b71378711fd3c5b21f2c8aa970696" alt="website statistics" width="1" height="1" />blog tracking</a></noscript>
+  <!-- Bottom Header with Icon -->
+  <div class="bottom-header">
+  </div>
+  
 </body>
 </html>
